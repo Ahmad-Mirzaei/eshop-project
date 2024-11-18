@@ -1,13 +1,13 @@
 {%  extends 'base.html' %}
 
 {% block title %}
-	product list
+	product detail
 {% endblock %}
 
 {% block content %}
-    <ul>
-        <li><a href="#">test</a></li>
-        <li><a href="#">test</a></li>
-        <li><a href="#">test</a></li>
-    </ul>
+    <h1>{{ product.title }}</h1>
+    <h2>price : {{ product.price }}</h2>
+    <p>
+        {{ product.short_description }}
+    </p>
 {% endblock %}
