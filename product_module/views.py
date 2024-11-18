@@ -7,7 +7,7 @@ def product_list(request):
     products = Product.objects.all()
     return render(request, 'product_module/product_list.html', {'products': products})
 
-def product_detail(request, pk):
+def product_detail(request, slug):
     # step 1
     # try:
     #     product = Product.objects.get(id = pk)
@@ -15,5 +15,5 @@ def product_detail(request, pk):
     #     raise Http404("گشتم نبود؛ نگرد نیست")
 
     # step 2
-    product = get_object_or_404(Product, id = pk)
+    product = get_object_or_404(Product, slug = slug)
     return render(request, 'product_module/product_detail.html', {"product": product})
