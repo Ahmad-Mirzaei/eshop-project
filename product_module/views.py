@@ -25,3 +25,6 @@ def product_detail(request, slug):
     # step 2
     product = get_object_or_404(Product, slug = slug)
     return render(request, 'product_module/product_detail.html', {"product": product})
+
+
+# for test git status --short
