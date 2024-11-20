@@ -1,10 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product
+from .models import Product, ProductCategory
 from django.http import Http404
 from django.db.models import Avg
 # Create your views here.
 
 def product_list(request):
+    console = ProductCategory(title = "پلی استیشن", url_title = "playstation")
+    console.save()
+
+    ps5 = Product(title = "play station 5", price = 2000000, category = console, short_description = "ps 5", rating = 4)
+    ps5.save()
+
     products = Product.objects.all().order_by("price")  # براساس کمترین قیمت مرتب کن
     number_of_products = products.count()
     avg_rating = products.aggregate(Avg("rating"))
@@ -14,6 +20,7 @@ def product_list(request):
         'avg_rating': avg_rating,
     }
     return render(request, 'product_module/product_list.html', context)
+
 
 def product_detail(request, slug):
     # step 1

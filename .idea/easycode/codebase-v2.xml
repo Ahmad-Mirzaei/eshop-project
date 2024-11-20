@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/eshop_project/__init__.py;D:/eshop_project/eshop_project/asgi.py;D:/eshop_project/eshop_project/settings.py;D:/eshop_project/eshop_project/urls.py;D:/eshop_project/eshop_project/wsgi.py;D:/eshop_project/product_module/migrations/0001_initial.py;D:/eshop_project/product_module/migrations/0002_product_is_active_product_rating_and_more.py;D:/eshop_project/product_module/migrations/0003_product_slug.py;D:/eshop_project/product_module/migrations/0004_productcategory_alter_product_slug_product_category.py;D:/eshop_project/product_module/migrations/__init__.py;D:/eshop_project/product_module/templates/product_module/product_detail.html;D:/eshop_project/product_module/templates/product_module/product_list.html;D:/eshop_project/product_module/__init__.py;D:/eshop_project/product_module/admin.py;D:/eshop_project/product_module/apps.py;D:/eshop_project/product_module/models.py;D:/eshop_project/product_module/tests.py;D:/eshop_project/product_module/urls.py;D:/eshop_project/product_module/views.py;D:/eshop_project/templates/base.html;D:/eshop_project/manage.py" />
+  </component>
+</project>

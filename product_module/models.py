@@ -14,7 +14,7 @@ class ProductCategory(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(ProductCategory, on_delete = models.CASCADE, null = True)
+    category = models.ForeignKey(ProductCategory, on_delete = models.CASCADE, null = True, related_name = "products")
     title = models.CharField(max_length = 300, verbose_name = "عنوان")
     price = models.IntegerField(verbose_name = "قیمت")
     rating = models.IntegerField(validators = [MinValueValidator(1), MaxValueValidator(5)], default = 0, verbose_name = "امتیاز")
