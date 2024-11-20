@@ -8,7 +8,7 @@ from . import models
 class ProductAdmin(admin.ModelAdmin):
     # readonly_fields = ['slug']  # or ("slug", )
     prepopulated_fields = {'slug': ["title"]}
-    list_display = ["title", "price", "rating", "is_active"]
+    list_display = ["category", "title", "price", "rating", "is_active"]
     list_filter = ["rating", "is_active"]
     list_editable = ["rating", "is_active"]
 
@@ -17,3 +17,9 @@ class ProductAdmin(admin.ModelAdmin):
 # ----------------------------------------------------------------------------------------------------------------------
 # test for git push -u origin master
 # test for git push
+
+@admin.register(models.ProductCategory)
+class ProductCategoryAdmin(admin.ModelAdmin):
+    list_display = ["title", "url_title"]
+
+# admin.site.register(models.ProductCategory)

@@ -5,12 +5,6 @@ from django.db.models import Avg
 # Create your views here.
 
 def product_list(request):
-    console = ProductCategory(title = "پلی استیشن", url_title = "playstation")
-    console.save()
-
-    ps5 = Product(title = "play station 5", price = 2000000, category = console, short_description = "ps 5", rating = 4)
-    ps5.save()
-
     products = Product.objects.all().order_by("price")  # براساس کمترین قیمت مرتب کن
     number_of_products = products.count()
     avg_rating = products.aggregate(Avg("rating"))
