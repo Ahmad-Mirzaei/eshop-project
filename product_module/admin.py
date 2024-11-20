@@ -16,3 +16,4 @@ class ProductAdmin(admin.ModelAdmin):
 # admin.site.register(models.Product, ProductAdmin)
 # ----------------------------------------------------------------------------------------------------------------------
 # test for git push -u origin master
+# test for git push
