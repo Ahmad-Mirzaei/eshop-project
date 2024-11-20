@@ -13,8 +13,17 @@ class ProductCategory(models.Model):
         return f"({self.title} - {self.url_title})"
 
 
+class ProductInformation(models.Model):
+    color = models.CharField(max_length = 300, verbose_name = "رنگ")
+    size = models.CharField(max_length = 300, blank = True, verbose_name = "سایز")
+
+    def __str__(self):
+        return f"{self.color} - {self.size}"
+
+
 class Product(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete = models.CASCADE, null = True, related_name = "products", verbose_name = "دسته بندی")
+    product_information = models.OneToOneField(ProductInformation, on_delete = models.CASCADE, null = True, blank = True, related_name = "product_information", verbose_name = "اطلاعات تکمیلی")
     title = models.CharField(max_length = 300, verbose_name = "عنوان")
     price = models.IntegerField(verbose_name = "قیمت")
     rating = models.IntegerField(validators = [MinValueValidator(1), MaxValueValidator(5)], default = 0, verbose_name = "امتیاز")
@@ -22,7 +31,6 @@ class Product(models.Model):
     is_active = models.BooleanField(default = False, verbose_name = "وضعیت")
     # slug = models.SlugField(default = "", null = False, db_index = True, blank = True, editable = False)
     slug = models.SlugField(default = "", null = False, db_index = True, blank = True)
-
 
     def __str__(self):
         return f"{self.title} ({self.price})"
