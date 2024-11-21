@@ -11,16 +11,26 @@ class ProductCategory(models.Model):
     title = models.CharField(max_length = 300, verbose_name = "عنوان")
     url_title = models.CharField(max_length = 300, verbose_name = "عنوان در url")
 
+    class Meta:
+        verbose_name = "دسته بندی"
+        verbose_name_plural = "دسته بندی ها"
+
     def __str__(self):
         return f"({self.title} - {self.url_title})"
+
 
 
 class ProductInformation(models.Model):
     color = models.CharField(max_length = 300, verbose_name = "رنگ")
     size = models.CharField(max_length = 300, blank = True, verbose_name = "سایز")
 
+    class Meta:
+        verbose_name = "اطلاعات تکمیلی"
+        verbose_name_plural = "تمام اطلاعات تکمیلی"
+
     def __str__(self):
         return f"color : {self.color} - size : {self.size}"
+
 
 
 class Product(models.Model):
@@ -33,6 +43,10 @@ class Product(models.Model):
     is_active = models.BooleanField(default = False, verbose_name = "وضعیت")
     # slug = models.SlugField(default = "", null = False, db_index = True, blank = True, editable = False)
     slug = models.SlugField(default = "", null = False, db_index = True, blank = True)
+
+    class Meta:
+        verbose_name = "محصول"
+        verbose_name_plural = "محصولات"
 
     def __str__(self):
         return f"{self.title} ({self.price})"
