@@ -8,9 +8,9 @@ from . import models
 class ProductAdmin(admin.ModelAdmin):
     # readonly_fields = ['slug']  # or ("slug", )
     prepopulated_fields = {'slug': ["title"]}
-    list_display = ["category", "title", "price", "rating", "is_active", "product_information"]
-    list_filter = ["rating", "is_active"]
-    list_editable = ["rating", "is_active"]
+    list_display = ["title", "price", "is_active"]
+    list_filter = ["is_active", ]
+    list_editable = ["is_active"]
 
 # step 2
 # admin.site.register(models.Product, ProductAdmin)
@@ -20,15 +20,9 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(models.ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
-    list_display = ["title", "url_title"]
+    list_display = ["title", "url_title", "is_active"]
 # admin.site.register(models.ProductCategory)
-
-
-@admin.register(models.ProductInformation)
-class ProductInformationAdmin(admin.ModelAdmin):
-    list_display = ["color", "size"]
-
 
 @admin.register(models.ProductTag)
 class ProductTagAdmin(admin.ModelAdmin):
-    list_display = ["tag", ]
+    list_display = ["caption", ]
