@@ -21,8 +21,14 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(models.ProductCategory)
 class ProductCategoryAdmin(admin.ModelAdmin):
     list_display = ["title", "url_title"]
-
 # admin.site.register(models.ProductCategory)
+
+
 @admin.register(models.ProductInformation)
 class ProductInformationAdmin(admin.ModelAdmin):
     list_display = ["color", "size"]
+
+
+@admin.register(models.ProductTag)
+class ProductTagAdmin(admin.ModelAdmin):
+    list_display = ["tag", ]
