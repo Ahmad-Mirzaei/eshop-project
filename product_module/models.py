@@ -5,6 +5,8 @@ from django.utils.text import slugify
 
 # Create your models here.
 
+# test for git pull command
+# category for products 
 class ProductCategory(models.Model):
     title = models.CharField(max_length = 300, verbose_name = "عنوان")
     url_title = models.CharField(max_length = 300, verbose_name = "عنوان در url")
