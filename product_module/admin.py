@@ -6,11 +6,10 @@ from . import models
 # step 1
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
-    # readonly_fields = ['slug']  # or ("slug", )
-    prepopulated_fields = {'slug': ["title"]}
-    list_display = ["title", "price", "is_active"]
-    list_filter = ["is_active", ]
-    list_editable = ["is_active"]
+    list_filter = ["category", "is_active"]
+    list_display = ["title", "price", "is_active", "is_delete"]
+    list_editable = ["is_active", "price"]
+    # prepopulated_fields = {'slug': ["title"]}
 
 # step 2
 # admin.site.register(models.Product, ProductAdmin)
