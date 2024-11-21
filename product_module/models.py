@@ -20,7 +20,7 @@ class ProductInformation(models.Model):
     size = models.CharField(max_length = 300, blank = True, verbose_name = "سایز")
 
     def __str__(self):
-        return f"{self.color} - {self.size}"
+        return f"color : {self.color} - size : {self.size}"
 
 
 class Product(models.Model):
