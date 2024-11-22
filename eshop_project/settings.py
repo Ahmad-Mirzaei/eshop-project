@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product_module',
+    'home_module',
 
 ]
 
@@ -120,8 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 # static
-STATIC_URL = 'static/'
-# STATICFILES_DIRS = [BASE_DIR / 'static/']
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static/']
 
 # media
 MEDIA_URL = 'media/'
