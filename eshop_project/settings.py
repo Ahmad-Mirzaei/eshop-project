@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_render_partial',
     'home_module',
     'product_module',
-    'django_render_partial',
+    'contact_module',
 
 ]
 
