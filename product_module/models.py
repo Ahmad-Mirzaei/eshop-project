@@ -22,9 +22,21 @@ class ProductCategory(models.Model):
         return f"({self.title} - {self.url_title})"
 # ----------------------------------------------------------------------------------------------------------------------
 
+class ProductBrand(models.Model):
+    title = models.CharField(max_length = 300, db_index = True, verbose_name = "نام برند")
+    is_active = models.BooleanField(verbose_name = "فعال / غیرفعال")
+
+    class Meta:
+        verbose_name = "برند"
+        verbose_name_plural = "برندها"
+
+    def __str__(self):
+        return f"{self.title} {self.is_active}"
+# ----------------------------------------------------------------------------------------------------------------------
 class Product(models.Model):
     title = models.CharField(max_length = 300, verbose_name = "عنوان")
     category = models.ManyToManyField(ProductCategory, related_name = "product_categories", verbose_name = "دسته بندی ها")
+    brand = models.ForeignKey(ProductBrand, on_delete = models.CASCADE, null = True, blank = True, verbose_name = "برند")
     price = models.IntegerField(verbose_name = "قیمت")
     short_description = models.CharField(max_length = 360, null = True, db_index = True, verbose_name = "توضیحات کوتاه")
     description = models.TextField(db_index = True, verbose_name = "توضیحات اصلی")
