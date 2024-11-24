@@ -12,26 +12,12 @@
                     <div class="contact-form">
                         <h2 class="title text-center">با ما در ارتباط باشیـد</h2>
                         <div class="status alert alert-success" style="display: none"></div>
-                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="POST">
-                            <div class="form-group col-md-6">
-                                <input type="text" name="name" class="form-control" required="required"
-                                       placeholder="نام">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="email" name="email" class="form-control" required="required"
-                                       placeholder="ایمیـل">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <input type="text" name="subject" class="form-control" required="required"
-                                       placeholder="موضـوع">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <textarea name="message" id="message" required="" class="form-control" rows="8"
-                                          placeholder="پیغـام شمـا"></textarea>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <input type="submit" name="submit" class="btn btn-primary pull-right" value="ارسـال">
-                            </div>
+                        <form id="main-contact-form" class="contact-form row" action="{% url 'contact_us_page' %}" method="POST">
+                            {% csrf_token %}
+                            {% for form in forms %}
+                            	
+                            {% endfor %}
+                            
                         </form>
                     </div>
                 </div>
