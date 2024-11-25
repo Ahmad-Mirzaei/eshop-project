@@ -1,9 +1,9 @@
 jQuery(function($) {'use strict',
 
-	var form = $('.contact-form');
+	var form = $('.contact_module-form');
 	form.submit(function () {'use strict',
 		$this = $(this);
-		$.post("sendemail.php", $(".contact-form").serialize(),function(result){
+		$.post("sendemail.php", $(".contact_module-form").serialize(),function(result){
 			if(result.type == 'success'){
 				$this.prev().text(result.message).fadeIn().delay(3000).fadeOut();
 			}

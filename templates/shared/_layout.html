@@ -1,5 +1,4 @@
 {% load render_partial %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{% block title %}  {% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     {% include 'shared/header_references.html' %}
-</head><!--/head-->
-
+</head>
 <body>
-{#بر اساس سیستم آدرس دهی نام url#}
-{#{% render_partial 'site_header_partial' %} #}
-{#-------------------------------------------------#}
-{#بر اساس سیستم آدرس دهی فانکشن یا کلاس بیس ویو#}
-{#url باید پاک یا کامنت شود#}
 {% render_partial 'home_module.views.site_header_component' %}
-{# slider #}
-{#container#}   
-{% block content %}  {% endblock %}
-
+{% block content %}{% endblock %}
 {% render_partial 'home_module.views.site_footer_component' %}
-	
-    {#scripts#}
-    {% include 'shared/footer_references.html' %}
+{% include 'shared/footer_references.html' %}
 </body>
 </html>
