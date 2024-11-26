@@ -15,27 +15,61 @@
                         <form id="main-contact-form" class="contact-form row" action="{% url 'contact_us_page' %}"
                               method="post">
                             {% csrf_token %}
+
+{#                            {% for field in contact_form %}#}
+{#                                <div class="col-md-12 form-group">#}
+{#                                    {{ field.label_tag }}#}
+{#                                    {{ field }}#}
+{#                                    {{ field.errors }}#}
+{#                                </div>#}
+{#                            {% endfor %}#}
+
+
+
+
                             <div class="col-md-6 form-group">
                                 {{ contact_form.email.label_tag }}
                                 {{ contact_form.email }}
                                 {{ contact_form.email.errors }}
                             </div>
-                            <div class="col-md-6 form-group {% if contact_form.full_name.errors %} text-danger {% endif %}">
+
+                            <div class="col-md-6 form-group {% if contact_form.full_name.errors %} text-danger  {% endif %}">
                                 {{ contact_form.full_name.label_tag }}
                                 {{ contact_form.full_name }}
                                 {{ contact_form.full_name.errors }}
                             </div>
+
                             <div class="col-md-12 form-group">
-                                {{ contact_form.subject.label_tag }}
-                                {{ contact_form.subject }}
-                                {{ contact_form.subject.errors }}
+                                {{ contact_form.title.label_tag }}
+                                {{ contact_form.title }}
+                                {{ contact_form.title.errors }}
                             </div>
+
                             <div class="col-md-12 form-group">
-                                {{ contact_form.text.label_tag }}
-                                {{ contact_form.text }}
-                                {{ contact_form.text.errors }}
+                                {{ contact_form.message.label_tag }}
+                                {{ contact_form.message }}
+                                {{ contact_form.message.errors }}
+                            </div>
+
+                            {% comment %}{{ contact_form }}{% endcomment %}
+                            {% comment %}<div class="form-group col-md-6">
+                                <input type="text" name="fullname" class="form-control"
+                                       placeholder="نام">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" name="email" class="form-control"
+                                       placeholder="ایمیـل">
                             </div>
                             <div class="form-group col-md-12">
+                                <input type="text" name="subject" class="form-control"
+                                       placeholder="موضـوع">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea name="message" id="message" class="form-control" rows="8"
+                                          placeholder="پیغـام شمـا"></textarea>
+                            </div>{% endcomment %}
+                            <div class="form-group col-md-12">
+                                {% comment %}<input type="submit" name="submit" class="btn btn-primary pull-right" value="ارسـال">{% endcomment %}
                                 <button type="submit" class="btn btn-primary pull-right">ارسال</button>
                             </div>
                         </form>
