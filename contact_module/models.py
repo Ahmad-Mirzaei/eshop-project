@@ -18,3 +18,8 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class UserProfile(models.Model):
+    image = models.FileField(upload_to = 'images')
