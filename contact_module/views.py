@@ -41,3 +41,10 @@ class ContactUsView(CreateView):
 
 
 
+class CreateProfileView(View):
+    def get(self, request):
+        return render(request, 'contact_module/create_profile_page.html')
+
+    def post(self, request):
+        print(request.FILES)  # output -->  <MultiValueDict: {'image': [<InMemoryUploadedFile: 0bQpq.png (image/png)>]}>
+        return redirect('/contact-us/create-profile')
