@@ -37,5 +37,6 @@ class ContactUsModelForm(forms.ModelForm):
         }
 
 
-class ProfileForm(forms.Form):
-    user_image = forms.FileField(label = "تصویر کاربر")
+# class ProfileForm(forms.Form):
+#     # user_image = forms.FileField(label = "تصویر کاربر")
+#     user_image = forms.ImageField(label = "تصویر کاربر")
