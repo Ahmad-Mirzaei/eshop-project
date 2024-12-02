@@ -128,3 +128,4 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# SESSION_COOKIE_AGE = 43200  # تایم سشن ها به ثانیه است که به طور پیش فرض 2 هقته در نظر گرفته شده است
