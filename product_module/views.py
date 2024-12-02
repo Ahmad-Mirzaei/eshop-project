@@ -36,3 +36,4 @@ class AddProductFavorite(View):
         return redirect(product.get_absolute_url())
 
 # ----------------------------------------------------------------------------------------------------------------------
+# test for activity
