@@ -23,8 +23,17 @@ class ProductListView(ListView):
 # ----------------------------------------------------------------------------------------------------------------------
 
 class ProductDetailView(DetailView):
-    template_name = 'product_module/product_detail.html'
     model = Product
+    template_name = 'product_module/product_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        loaded_product = self.object
+        request = self.request
+        # favorite_product_id = request.session["product_favorite"]
+        favorite_product_id = request.session.get("product_favorite")
+        context["is_favorite"] = favorite_product_id == str(loaded_product.id)
+        return context
 
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -36,4 +45,7 @@ class AddProductFavorite(View):
         return redirect(product.get_absolute_url())
 
 # ----------------------------------------------------------------------------------------------------------------------
-# test for activity
+
+
+
+# ----------------------------------------------------------------------------------------------------------------------
