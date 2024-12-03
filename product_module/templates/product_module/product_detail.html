@@ -21,7 +21,11 @@
                     <div class="product-details"><!--product-details-->
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="/static/images/product-details/1.jpg" alt="">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="">
+                                {% else %}
+                                    <img src="/static/images/product-details/1.jpg" alt="">
+                                {% endif %}
                                 <h3>بزرگنمایـی</h3>
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">

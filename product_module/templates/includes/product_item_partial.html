@@ -2,7 +2,11 @@
     <div class="product-image-wrapper">
         <div class="single-products">
             <div class="productinfo text-center">
-                <img src="/static/images/shop/product.jpg" alt="">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="" width="250" height="237">
+                {% else %}
+                    <img src="/static/images/shop/product.jpg" alt="">
+                {% endif %}
                 <h2>{{ product.price }} تومان</h2>
                 <p>{{ product.title }}</p>
                 <a href="#" class="btn btn-default add-to-cart"><i
