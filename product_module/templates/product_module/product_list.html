@@ -9,31 +9,24 @@
 
                 <div class="col-sm-9 padding-right">
                     <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">لیست محصولات</h2>
+                        <h2 class="title text-center">محصولات عمده</h2>
                         {% for product in products %}
                             {% include 'includes/product_item_partial.html' with product=product %}
                         {% endfor %}
                         <div class="clearfix"></div>
                         <ul class="pagination">
-
-                        {% if page_obj.has_previous %}
-                        	<li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
-                        {% endif %}
-
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                            {% endif %}
                             {% for pageNumber in paginator.page_range %}
-                                <li {% if page_obj.number == pageNumber %} class="active" {% endif %}>
+                                <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
                                     <a href="?page={{ pageNumber }}">{{ pageNumber }}</a>
                                 </li>
                             {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                            {% endif %}
 
-                        {% if page_obj.has_next %}
-                        	<li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
-                        {% endif %}
-
-{#                            <li class="active"><a href="">1</a></li>#}
-{#                            <li><a href="">2</a></li>#}
-{#                            <li><a href="">3</a></li>#}
-{#                            <li><a href="">»</a></li>#}
                         </ul>
                     </div><!--features_items-->
                 </div>
@@ -57,8 +50,8 @@
                                             <li><a href="">محصول 1 </a></li>
                                             <li><a href="">محصول 2 </a></li>
                                             <li><a href="">محصول 3 </a></li>
-                                            <li><a href="">محصول 4 </a></li>
-                                            <li><a href=""> محصول 5 </a></li>
+                                            <li><a href="">محصول 4</a></li>
+                                            <li><a href="">محصول 5</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -10,13 +10,12 @@
             <div class="row">
                 <div class="col-sm-8">
                     <div class="contact-form">
-                        <h2 class="title text-center">ایجاد پروفایل</h2>
+                        <h2 class="title text-center">ثبت پروفایل</h2>
                         <div class="status alert alert-success" style="display: none"></div>
                         <form id="main-contact-form" class="contact-form row" action="{% url 'create_profile_page' %}"
                               method="post" enctype="multipart/form-data">
                             {% csrf_token %}
-{#                            <input type="file" name="profile">#}
-                                {{ form }}
+                            {{ form }}
                             <div class="form-group col-md-12">
                                 <button type="submit" class="btn btn-primary pull-right">ارسال</button>
                             </div>

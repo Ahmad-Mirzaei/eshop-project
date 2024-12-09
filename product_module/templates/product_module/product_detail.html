@@ -8,15 +8,13 @@
     <section>
         <div class="container">
             <div class="row">
-
-            {% if is_favorite %}
-                <div class="col-md-12">
-                    <p>
-                        این محصول مورد علاقه ی شما است
-                    </p>
-                </div>
-            {% endif %}
-
+                {% if is_favorite %}
+                    <div class="col-md-12">
+                        <p>
+                            این محصول مورد علاقه من است
+                        </p>
+                    </div>
+                {% endif %}
                 <div class="col-sm-9 padding-right">
                     <div class="product-details"><!--product-details-->
                         <div class="col-sm-5">
@@ -74,12 +72,12 @@
                                     <span>
 										<form action="{% url 'product-favorite' %}" method="post">
                                             {% csrf_token %}
-                                            <label> تعداد :</label>
-										    <input type="hidden" name="product_id" value="{{ product.id }}" class="search_box">
-										    <button type="submit" class="btn btn-default cart">
+                                            <label>تعداد :</label>
+										<input type="hidden" name="product_id" value="{{ product.id }}"
+                                               class="search_box">
+										<button type="submit" class="btn btn-fefault cart">
 											<i class="fa fa-shopping-cart"></i>
-{#											افـزودن به سبـد خریـد#}
-                                            کالای محبوب من
+											ثبت به عنوان کالای محبوب
 										</button>
                                         </form>
 									</span>

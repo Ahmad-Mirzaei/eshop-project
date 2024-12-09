@@ -35,10 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'acount_module',
+    # internal apps
+    'account_module',
     'home_module',
     'product_module',
     'contact_module',
+    # external apps
     'django_render_partial',
 ]
 
@@ -75,7 +77,7 @@ WSGI_APPLICATION = 'eshop_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-AUTH_USER_MODEL = 'acount_module.User'
+AUTH_USER_MODEL = 'account_module.User'
 
 DATABASES = {
     'default': {
@@ -120,15 +122,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_URL = '/medias/'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'uploads'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# SESSION_COOKIE_AGE = 43200  # تایم سشن ها به ثانیه است که به طور پیش فرض 2 هقته در نظر گرفته شده است
+
+# SESSION_COOKIE_AGE = 120

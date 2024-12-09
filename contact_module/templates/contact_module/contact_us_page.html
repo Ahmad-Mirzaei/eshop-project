@@ -16,15 +16,15 @@
                               method="post">
                             {% csrf_token %}
 
-{#                            {% for field in form %}#}
-{#                                <div class="col-md-12 form-group">#}
-{#                                    {{ field.label_tag }}#}
-{#                                    {{ field }}#}
-{#                                    {{ field.errors }}#}
-{#                                </div>#}
-{#                            {% endfor %}#}
+                            {% comment %}{% for field in form %}
+                                <div class="col-md-12 form-group">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {{ field.errors }}
+                                </div>
+                            {% endfor %}
 
-
+                            <hr>{% endcomment %}
 
 
                             <div class="col-md-6 form-group">
