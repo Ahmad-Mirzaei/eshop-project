@@ -6,7 +6,7 @@ from django.views import View
 from .models import User
 from django.utils.crypto import get_random_string
 from django.http import Http404, HttpRequest
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
 from django.contrib.auth import login, logout
 
 
@@ -94,3 +94,30 @@ class LoginView(View):
         return render(request, "account_module/login.html", context)
 
 
+
+class ForgetPassword(View):
+    def get(self, request: HttpRequest):
+        forget_pass_form = ForgotPasswordForm()
+        context = {"forget_pass_form" : forget_pass_form}
+        return render(request, 'account_module/forgot_password.html', context)
+
+    def post(self, request: HttpRequest):
+        forget_pass_form = ForgotPasswordForm(request.POST)
+        if forget_pass_form.is_valid():
+            user_email = forget_pass_form.cleaned_data.get("email")
+            user : User = User.objects.filter(email__iexact = user_email).first()
+            if user is not None:
+                # send reset password email to user
+                pass
+        context = {"forget_pass_form": forget_pass_form}
+        return render(request, 'account_module/forgot_password.html', context)
+
+
+class ResetPassword(View):
+    def get(self, request: HttpRequest, active_code):
+        user : User = User.objects.filter(email_active_code__iexact = active_code).first()
+        if user is None:
+            return redirect(reverse('login_page'))
+        reset_pass_form = ResetPasswordForm()
+        context = {"reset_pass_form" : reset_pass_form}
+        return render(request, 'account_module/forgot_password.html', context)
