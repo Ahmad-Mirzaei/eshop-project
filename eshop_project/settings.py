@@ -135,3 +135,11 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # SESSION_COOKIE_AGE = 120
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp,Email.Backend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'اکانت ایمیلی که میخواهیم با آن ایمیل بفرستیم'
+EMAIL_HOST_PASSWORD = 'رمز اکانتی که میخواهیم با آن ایمیل بفرستیم'
+EMAIL_PORT = 587  # -> برای جیمیل از این پرت استفاده می شود
