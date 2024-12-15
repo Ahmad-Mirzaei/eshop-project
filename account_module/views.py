@@ -119,7 +119,7 @@ class ResetPassword(View):
         if user is None:
             return redirect(reverse('login_page'))
         reset_pass_form = ResetPasswordForm()
-        context = {"reset_pass_form" : reset_pass_form}
+        context = {"reset_pass_form" : reset_pass_form, "user" : user}
         return render(request, 'account_module/forgot_password.html', context)
 
     def post(self, request : HttpRequest, active_code):
