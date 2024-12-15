@@ -124,8 +124,8 @@ class ResetPassword(View):
 
     def post(self, request : HttpRequest, active_code):
         reset_pass_form = ResetPasswordForm(request.POST)
+        user: User = User.objects.filter(email_active_code__iexact = active_code).first()
         if reset_pass_form.is_valid():
-            user: User = User.objects.filter(email_active_code__iexact = active_code).first()
             if user is None:
                 return redirect(reverse("login_page"))
             user_new_pass = reset_pass_form.cleaned_data.get("password")
@@ -134,3 +134,5 @@ class ResetPassword(View):
             user.is_active = True
             user.save()
             return redirect(reverse("login_page"))
+        context = {"reset_pass_form": reset_pass_form, "user": user}
+        return render(request, 'account_module/forgot_password.html', context)
