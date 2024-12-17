@@ -8,7 +8,7 @@ from django.utils.crypto import get_random_string
 from django.http import Http404, HttpRequest
 from .forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
 from django.contrib.auth import login, logout
-from django.utils.email_service import send_email
+from utils.email_service import send_email
 
 
 class RegisterView(View):
