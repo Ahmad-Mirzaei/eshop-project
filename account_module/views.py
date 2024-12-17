@@ -37,7 +37,7 @@ class RegisterView(View):
                 new_user.set_password(user_password)
                 new_user.save()
                 # todo: send email active code
-                send_email("فعال سازی حساب کاربری", new_user.email, {"user": new_user}, "emails/active_account.html")
+                send_email("فعال سازی حساب کاربری", new_user.email, {"user": new_user}, "emails/activate_account.html")
                 return redirect(reverse('login_page'))
 
         context = {
@@ -107,7 +107,9 @@ class ForgetPasswordView(View):
             user : User = User.objects.filter(email__iexact = user_email).first()
             if user is not None:
                 # send reset password email to user
-                pass
+                send_email("بازیابی کلمه ی عبور", user.email, {"user": user}, "emails/forgot_password.html")
+                return redirect(reverse("home_page"))
+
         context = {"forget_pass_form": forget_pass_form}
         return render(request, 'account_module/forgot_password.html', context)
 
