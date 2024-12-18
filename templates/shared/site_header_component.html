@@ -38,8 +38,7 @@
 
                 <div class="col-sm-4" style="text-align: left;">
                     <div class="logo">
-                        <a href="index.html"><img src="/static/images/home/logo.png" alt="Logo"
-                                                  style="text-align: center;"/></a>
+                        <a href="{% url 'home_page' %}"><img src="{{ site_setting.site_logo.url }}" alt="Logo" style="text-align: center; height: 120px"/></a>
                     </div>
                 </div>
 

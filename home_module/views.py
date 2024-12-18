@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from site_module.models import SiteSetting
 # Create your views here.
 
 
@@ -15,11 +16,12 @@ class HomeView(TemplateView):
 
 
 def site_header_component(request):
-    context = {
-        'link': 'آموزش جنگو'
-    }
+    setting: SiteSetting = SiteSetting.objects.filter(is_main_setting = True).first()
+    context = {"site_setting" : setting}
     return render(request, 'shared/site_header_component.html', context)
 
 
 def site_footer_component(request):
-    return render(request, 'shared/site_footer_component.html', {})
+    setting: SiteSetting = SiteSetting.objects.filter(is_main_setting = True).first()
+    context = {"site_setting" : setting}
+    return render(request, 'shared/site_footer_component.html', context)

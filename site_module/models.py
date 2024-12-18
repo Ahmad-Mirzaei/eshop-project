@@ -10,7 +10,7 @@ class SiteSetting(models.Model):
     phone = models.CharField(max_length = 200, null = True, blank = True, verbose_name = "شماره تماس ")
     fax = models.CharField(max_length = 200, null = True, blank = True, verbose_name = "فکس ")
     email = models.CharField(max_length = 200, null = True, blank = True, verbose_name = "ایمیل ")
-    copy_right = models.TextField(verbose_name = "تن کپی زایت ")
+    copy_right = models.TextField(verbose_name = "متن کپی رایت ")
     about_us_text = models.TextField(verbose_name = "متن درباره ی ما")
     site_logo = models.ImageField(upload_to = 'images/site-setting/', verbose_name = "لوگو سایت")
     is_main_setting = models.BooleanField(verbose_name = "تنظیمات اصلی")
