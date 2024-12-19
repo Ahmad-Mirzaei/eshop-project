@@ -1,8 +1,10 @@
 {% extends 'shared/_layout.html' %}
 
+{% block title %}
+	فروشگاه من | صفحه اصلی
+{% endblock %}
+
 {% block content %}
-    <p>{{ data }}</p>
-    <p>{{ message }}</p>
     <section id="slider"><!--slider-->
         <div class="container">
             <div class="row">
@@ -15,33 +17,20 @@
 
                         <div class="carousel-inner">
 
-                            <div class="item active">
+                            {% for slider in sliders %}
+                                <div class="item {% if forloop.first %} active {% endif %}">
                                 <div class="col-sm-6">
-                                    <h1><span>SHOP</span>CENTER</h1>
-                                    <h2>Shop Center</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
+{#                                    <h1><span>SHOP</span>CENTER</h1>#}
+                                    <h2>{{ slider.title }}</h2>
+                                    <p>{{ slider.description }}</p>
+                                    <a href="{{ slider.url }}" target="_blank" class="btn btn-default get">{{ slider.url_title }}</a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="/static/images/home/girl2.jpg" class="girl img-responsive" alt=""/>
-                                    <img src="/static/images/home/pricing.png" class="pricing" alt=""/>
+                                    <img src="{{ slider.image.url }}" class="girl img-responsive" height="300" width="300" alt=""/>
                                 </div>
                             </div>
+                            {% endfor %}
 
-                            <div class="item">
-                                <div class="col-sm-6">
-                                    <h1><span>SHOP</span>CENTER</h1>
-                                    <h2>Shop Center</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Get it now</button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="/static/images/home/girl2.jpg" class="girl img-responsive" alt=""/>
-                                    <img src="/static/images/home/pricing.png" class="pricing" alt=""/>
-                                </div>
-                            </div>
 
                         </div>
 

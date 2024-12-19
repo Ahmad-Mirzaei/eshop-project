@@ -49,10 +49,12 @@ class FooterLink(models.Model):
 
 
 class Slider(models.Model):
-    title = models.Charfield(max_length = 200, verbose_name = "عنوان")
+    title = models.CharField(max_length = 200, verbose_name = "عنوان")
     url = models.URLField(max_length = 500, verbose_name = "لینک")
     url_title = models.CharField(max_length = 200, verbose_name = "عنوان لینک")
     description = models.TextField(verbose_name = "توضیحات اسلایدر")
+    image = models.ImageField(upload_to = "images/sliders", verbose_name = "تصویر اسلایدر")
+    is_active = models.BooleanField(default = True, verbose_name = "فعال / غیرفعال")
 
     class Meta:
         verbose_name = "اسلایدر"
