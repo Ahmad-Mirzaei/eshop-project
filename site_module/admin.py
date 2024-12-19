@@ -9,7 +9,7 @@ class FooterLinkAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.SiteSetting)
-
 admin.site.register(models.FooterLinkBox)
+admin.site.register(models.Slider)
 
 # admin.site.register(models.FooterLink)

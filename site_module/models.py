@@ -45,3 +45,18 @@ class FooterLink(models.Model):
 
     def __str__(self):
         return self.title
+
+
+
+class Slider(models.Model):
+    title = models.Charfield(max_length = 200, verbose_name = "عنوان")
+    url = models.URLField(max_length = 500, verbose_name = "لینک")
+    url_title = models.CharField(max_length = 200, verbose_name = "عنوان لینک")
+    description = models.TextField(verbose_name = "توضیحات اسلایدر")
+
+    class Meta:
+        verbose_name = "اسلایدر"
+        verbose_name_plural = "اسلایدر ها"
+
+    def __str__(self):
+        return self.title
