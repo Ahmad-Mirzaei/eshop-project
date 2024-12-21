@@ -1,5 +1,7 @@
 {%  extends 'shared/_layout.html' %}
 {% load thumbnail %}
+{% load jalali_tags %}
+{% load poll_extras %}
 
 {% block title %}
 	لیست مقالات
@@ -23,8 +25,8 @@
                                         {% if article.author is not None %}
                                             <li><i class="fa fa-user"></i>{{ article.author }}</li>
                                         {% endif %}
-                                        <li><i class="fa fa-clock-o"></i> 17:20 ب.ظ</li>
-                                        <li><i class="fa fa-calendar"></i> 28 تیـر 1397</li>
+                                        <li><i class="fa fa-clock-o"></i>{{ article.create_date | time }}</li>
+                                        <li><i class="fa fa-calendar"></i>{{ article.create_date | show_jalali_date }}</li>
                                     </ul>
                                     <span>
                                             <i class="fa fa-star"></i>
