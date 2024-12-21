@@ -20,7 +20,9 @@
                                 <h3>{{ article.title }}</h3>
                                 <div class="post-meta">
                                     <ul>
-                                        <li><i class="fa fa-user"></i> کاربـر 1</li>
+                                        {% if article.author is not None %}
+                                            <li><i class="fa fa-user"></i>{{ article.author }}</li>
+                                        {% endif %}
                                         <li><i class="fa fa-clock-o"></i> 17:20 ب.ظ</li>
                                         <li><i class="fa fa-calendar"></i> 28 تیـر 1397</li>
                                     </ul>
