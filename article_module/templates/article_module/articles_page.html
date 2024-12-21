@@ -37,11 +37,11 @@
                                 <a href="">
                                     {#<img src="{{ article.image.url }}" width="862" height="500" alt="">#}
                                     {% thumbnail article.image "862x500" quality=95 crop='center' as im %}
-                                        <img src="{{ im.url }}">
+                                        <img src="{{ im.url }}" alt="تصویر مقاله">
                                     {% endthumbnail %}
                                 </a>
                                 <p>{{ article.short_description }}</p>
-                                <a class="btn btn-primary" href="">ادامـه مطلب</a>
+                                <a class="btn btn-primary" href="">خواندن مقاله</a>
                             </div>
                             {% endfor %}
 
