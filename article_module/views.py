@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Article
 from django.views.generic.list import ListView
 from django.views import View
+from jalali_date import datetime2jalali, date2jalali
 # Create your views here.
 
 
