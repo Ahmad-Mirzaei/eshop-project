@@ -66,7 +66,6 @@ class ForgotPasswordForm(forms.Form):
     )
 
 
-
 class ResetPasswordForm(forms.Form):
     password = forms.CharField(
         label='کلمه عبور',

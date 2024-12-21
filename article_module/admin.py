@@ -10,5 +10,5 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(models.Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'short_description', 'is_active']
+    list_display = ['title', 'author', 'slug', 'short_description', 'is_active']
     list_editable = ['is_active',]
