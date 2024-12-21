@@ -19,7 +19,7 @@ class ArticleCategory(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length = 200, verbose_name = "عنوان مقاله")
-    author = models.ForeignKey(User, on_delete = models.CASCADE, null = True, verbose_name = "نویسنده")
+    author = models.ForeignKey(User, on_delete = models.CASCADE, null = True, editable = False, verbose_name = "نویسنده")
     slug = models.SlugField(max_length = 400, db_index = True, allow_unicode = True, verbose_name = "عنوان در url")
     image = models.ImageField(upload_to = 'images/articles', verbose_name = "تصویر مقاله")
     short_description = models.TextField(verbose_name = "توضیحات کوتاه")

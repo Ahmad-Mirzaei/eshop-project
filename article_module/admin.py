@@ -1,5 +1,10 @@
 from django.contrib import admin
 from . import models
+from django.http import HttpRequest
+
+from .models import Article
+
+
 # Register your models here.
 
 @admin.register(models.ArticleCategory)
@@ -12,3 +17,8 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ['title', 'author', 'slug', 'short_description', 'is_active']
     list_editable = ['is_active',]
+
+    def save_model(self, request: HttpRequest, obj: Article, form, change):
+        if not change:
+                obj.author = request.user
+        return super().save_model(request, obj, form, change)
