@@ -1,18 +1,11 @@
 from django.shortcuts import render
 from .models import Article, ArticleCategory
 from django.views.generic.list import ListView
+from django.views.generic import DetailView
+
 from django.views import View
-from jalali_date import datetime2jalali, date2jalali
-import datetime
 from django.http import HttpRequest
 # Create your views here.
-
-
-# class ArticlesView(View):
-#     def get(self, request):
-#         articles = Article.objects.filter(is_active = True)
-#         context = {'article' : articles}
-#         return render(request, 'article_module/articles_page.html', context)
 
 
 class ArticlesView(ListView):
@@ -31,7 +24,14 @@ class ArticlesView(ListView):
             query = query.filter(selected_categories__url_title__iexact = category_name)
         return query
 
+
 def article_categories_component(request: HttpRequest):
     article_main_categories = ArticleCategory.objects.filter(is_active = True, parent_id = None)
     context = {'main_categories' : article_main_categories}
     return render(request, 'article_module/components/article_categories_component.html', context)
+
+
+
+class ArticlesDetailView(DetailView):
+    model = Article
+    template_name = ''
