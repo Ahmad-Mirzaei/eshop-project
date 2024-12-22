@@ -1,8 +1,8 @@
+from django.core import paginator
 from django.shortcuts import render
 from .models import Article, ArticleCategory
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
-
 from django.views import View
 from django.http import HttpRequest
 # Create your views here.
@@ -34,4 +34,5 @@ def article_categories_component(request: HttpRequest):
 
 class ArticlesDetailView(DetailView):
     model = Article
-    template_name = ''
+    template_name = 'article_module/article_detail_page.html'
+

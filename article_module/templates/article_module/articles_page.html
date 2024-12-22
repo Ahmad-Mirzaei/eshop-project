@@ -46,7 +46,7 @@
                                     {% endthumbnail %}
                                 </a>
                                 <p>{{ article.short_description }}</p>
-                                <a class="btn btn-primary" href="">خواندن مقاله</a>
+                                <a class="btn btn-primary" href="{% url 'articles_detail' pk=article.id %}">خواندن مقاله</a>
                             </div>
                             {% endfor %}
                         <ul class="pagination">
