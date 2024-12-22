@@ -24,6 +24,12 @@ class ArticlesView(ListView):
         context = super(ArticlesView, self).get_context_data(*args, **kwargs)
         return context
 
+    def get_queryset(self):
+        query = super(ArticlesView, self).get_queryset()
+        category_name = self.kwargs.get('category')
+        if category_name is not None:
+            query = query.filter(selected_categories__url_title__iexact = category_name)
+        return query
 
 def article_categories_component(request: HttpRequest):
     article_main_categories = ArticleCategory.objects.filter(is_active = True, parent_id = None)
