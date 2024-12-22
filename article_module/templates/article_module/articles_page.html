@@ -2,6 +2,9 @@
 {% load thumbnail %}
 {% load jalali_tags %}
 {% load poll_extras %}
+{% load render_partial %}
+
+
 
 {% block title %}
 	لیست مقالات
@@ -26,7 +29,7 @@
                                             <li><i class="fa fa-user"></i>{{ article.author }}</li>
                                         {% endif %}
                                         <li><i class="fa fa-clock-o"></i>{{ article.create_date | time }}</li>
-                                        <li><i class="fa fa-calendar"></i>{{ article.create_date | show_jalali_date }}</li>
+                                        <li><i class="fa fa-calendar"></i>{{ article.create_date | to_jalali }}</li>
                                     </ul>
                                     <span>
                                             <i class="fa fa-star"></i>
@@ -52,87 +55,8 @@
 
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>دسته بندی محصولات</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											دسته 1
-										</a>
-									</h4>
-								</div>
-								<div id="sportswear" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="">محصول 1 </a></li>
-											<li><a href="">محصول 2 </a></li>
-											<li><a href="">محصول 3 </a></li>
-											<li><a href="">محصول 4</a></li>
-											<li><a href="">محصول 5</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											دسته 2
-										</a>
-									</h4>
-								</div>
-								<div id="mens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="">محصول 1 </a></li>
-											<li><a href="">محصول 2 </a></li>
-											<li><a href="">محصول 3 </a></li>
-											<li><a href="">محصول 4</a></li>
-											<li><a href="">محصول 5</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
 
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">محصول 1</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">محصول 2</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">محصول 3</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">محصول 4</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">محصول 5</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">محصول 6</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">محصول 7</a></h4>
-								</div>
-							</div>
-						</div><!--/category-productsr-->
+                        {% render_partial 'article_module.views.article_categories_component' %}
 
 						<div class="brands_products"><!--brands_products-->
 							<h2>برنـد ها</h2>
