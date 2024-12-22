@@ -49,7 +49,19 @@
                                 <a class="btn btn-primary" href="">خواندن مقاله</a>
                             </div>
                             {% endfor %}
-
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                            {% endif %}
+                            {% for pageNumber in paginator.page_range %}
+                                <li class="{% if page_obj.number == pageNumber %} active {% endif %}">
+                                    <a href="?page={{ pageNumber }}">{{ pageNumber }}</a>
+                                </li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                            {% endif %}
+                        </ul>
 					</div>
 				</div>
 

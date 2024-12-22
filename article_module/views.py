@@ -17,7 +17,7 @@ from django.http import HttpRequest
 
 class ArticlesView(ListView):
     model = Article
-    paginate_by = 10
+    paginate_by = 4
     template_name = 'article_module/articles_page.html'
 
     def get_context_data(self,*args, **kwargs):
