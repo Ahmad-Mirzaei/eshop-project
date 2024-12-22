@@ -19,6 +19,7 @@ class ArticlesView(ListView):
 
     def get_queryset(self):
         query = super(ArticlesView, self).get_queryset()
+        query = query.filter(is_active = True)
         category_name = self.kwargs.get('category')
         if category_name is not None:
             query = query.filter(selected_categories__url_title__iexact = category_name)
@@ -36,3 +37,7 @@ class ArticlesDetailView(DetailView):
     model = Article
     template_name = 'article_module/article_detail_page.html'
 
+    def get_queryset(self):
+        query = super(ArticlesDetailView, self).get_queryset()
+        query = query.filter(is_active = True)
+        return query
