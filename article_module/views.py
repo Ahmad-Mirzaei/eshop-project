@@ -1,6 +1,6 @@
 from django.core import paginator
 from django.shortcuts import render
-from .models import Article, ArticleCategory
+from .models import Article, ArticleCategory, ArticlesComment
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.views import View
@@ -41,3 +41,9 @@ class ArticlesDetailView(DetailView):
         query = super(ArticlesDetailView, self).get_queryset()
         query = query.filter(is_active = True)
         return query
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticlesDetailView, self).get_context_data()
+        article : Article = kwargs.get('object')
+        context['comments'] = ArticlesComment.objects.filter(article_id=article_id)
+        return context
