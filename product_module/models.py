@@ -47,7 +47,6 @@ class Product(models.Model):
         return reverse('product-detail', args=[self.slug])
 
     def save(self, *args, **kwargs):
-        # self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
     def __str__(self):
