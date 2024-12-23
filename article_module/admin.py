@@ -24,4 +24,6 @@ class ArticleAdmin(admin.ModelAdmin):
         return super().save_model(request, obj, form, change)
 
 
-admin.site.register(models.ArticlesComment)
+@admin.register(models.ArticlesComment)
+class ArticlesCommentAdmin(admin.ModelAdmin):
+    list_display = ['article', 'parent', 'user', 'create_date']

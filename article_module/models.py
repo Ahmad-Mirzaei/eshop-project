@@ -46,3 +46,6 @@ class ArticlesComment(models.Model):
     class Meta:
         verbose_name = "نظر مقاله"
         verbose_name_plural = "نظرات مقالات"
+
+    def __str__(self):
+        return f"{self.article} {self.parent} {self.user} {self.create_date}"
