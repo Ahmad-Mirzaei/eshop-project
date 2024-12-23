@@ -22,3 +22,6 @@ class ArticleAdmin(admin.ModelAdmin):
         if not change:
                 obj.author = request.user
         return super().save_model(request, obj, form, change)
+
+
+admin.site.register(models.ArticlesComment)

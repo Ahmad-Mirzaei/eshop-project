@@ -74,18 +74,20 @@
                             نظرات :
                         </h2>
                     </div>
-					<div class="media commnets">
+					{% if article.author %}
+                        <div class="media commnets">
 						<a class="pull-right" href="#">
-
-                            {% thumbnail article.author.avatar "121x86" quality=95 crop='center' as im %}
-                                    <img class="media-object" src="{{ im.url }}" alt="تصویر مقاله">
-                            {% endthumbnail %}
-
-							<img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                            {% if object.author.avatar %}
+                                {% thumbnail article.author.avatar "121x86" quality=95 crop='center' as im %}
+                                        <img class="media-object" src="{{ im.url }}" alt="تصویر مقاله">
+                                {% endthumbnail %}
+                            {% else %}
+                                <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                            {% endif %}
 						</a>
 						<div class="media-body">
 							<h4 class="media-heading"> نویسنده :  {{ article.author }}</h4>
-							<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده ازلورملورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+							<p>{{ article.author.about_user }}</p>
 							<div class="blog-socials">
 {#								<ul>#}
 {#									<li><a href=""><i class="fa fa-facebook"></i></a></li>#}
@@ -96,7 +98,8 @@
 								<a class="btn btn-primary" href="">سایـر مطالب نویسنده</a>
 							</div>
 						</div>
-					</div><!--Comments-->
+					</div>
+					{% endif %}
 					<div class="response-area">
 						<h2>پاسخ ها (3)</h2>
 						<ul class="media-list">
