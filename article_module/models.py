@@ -48,4 +48,4 @@ class ArticlesComment(models.Model):
         verbose_name_plural = "نظرات مقالات"
 
     def __str__(self):
-        return f"{self.article} {self.parent} {self.user} {self.create_date}"
+        return f"{self.user}"
