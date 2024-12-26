@@ -122,7 +122,7 @@
 										<li><i class="fa fa-calendar"></i>{{ comment.create_date | show_jalali_date }}</li>
 									</ul>
 									<p>{{ comment.text }}</p>
-									<a class="btn btn-primary" href=""><i class="fa fa-reply"></i>پاسـخ</a>
+									<a class="btn btn-primary" onclick="fillParentId({{ comment.id }})"><i class="fa fa-reply"></i>پاسـخ</a>
 								</div>
 							    </li>
                                 {% for sub_commant in comment.articlescomment_set.all %}
@@ -143,7 +143,6 @@
 										<li><i class="fa fa-calendar"></i>{{ sub_commant.create_date | show_jalali_date }}</li>
 									</ul>
 									<p>{{ sub_commant.text }}</p>
-									<a class="btn btn-primary" href=""><i class="fa fa-reply"></i>پاسـخ</a>
 								</div>
 							</li>
                                 {% endfor %}
@@ -153,18 +152,19 @@
 
 						</ul>
 					</div><!--/Response-area-->
-					<div class="replay-box">
+					<div class="replay-box"  id="comment_form">
 						{% if request.user.is_authenticated %}
                             <div class="row">
 							<div class="col-sm-12">
                                 <h2>نظـر خود را بنویسیـد</h2>
-								<div class="text-area" >
+								<div class="text-area">
+                                    <input type="hidden" name="" id="parent_id">
 									<div class="blank-arrow">
 										<label>متن پیام</label>
 									</div>
 									<span>*</span>
 									<textarea name="message" rows="10" id="commentText"></textarea>
-									<a class="btn btn-primary" onclick="sendArticleComment()">ارسـال نظـر</a>
+									<a class="btn btn-primary" onclick="sendArticleComment({{ article.id }})">ارسـال نظـر</a>
 								</div>
 							</div>
 

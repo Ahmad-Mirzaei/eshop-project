@@ -21,7 +21,7 @@ class ArticlesView(ListView):
 
     def get_queryset(self):
         query = super(ArticlesView, self).get_queryset()
-        query = query.filter(is_active = True)
+        query = query.filter(is_active = True).order_by('-create_date')
         category_name = self.kwargs.get('category')
         if category_name is not None:
             query = query.filter(selected_categories__url_title__iexact = category_name)
@@ -41,7 +41,7 @@ class ArticlesDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ArticlesDetailView, self).get_context_data()
         article : Article = kwargs.get('object')
-        context['comments'] = ArticlesComment.objects.filter(article_id=article.id, parent=None).prefetch_related('articlescomment_set')
+        context['comments'] = ArticlesComment.objects.filter(article_id=article.id, parent=None).order_by('-create_date').prefetch_related('articlescomment_set')
         return context
 
 
@@ -53,5 +53,10 @@ def article_categories_component(request: HttpRequest):
 
 
 def add_article_comment(request: HttpRequest):
-    print(request.GET)
+    if request.user.is_authenticated:
+        article_id = request.GET.get('article_id')
+        article_comment = request.GET.get('article_comment')
+        parent_id = request.GET.get('parent_id')
+        new_comment = ArticlesComment(article_id=article_id, text=article_comment, user_id=request.user.id, parent_id=parent_id)
+        new_comment.save()
     return HttpResponse("response")
