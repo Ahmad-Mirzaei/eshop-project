@@ -4,7 +4,9 @@ from .models import Article, ArticleCategory, ArticlesComment
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.views import View
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
+
+
 # Create your views here.
 
 
@@ -47,3 +49,8 @@ class ArticlesDetailView(DetailView):
         article : Article = kwargs.get('object')
         context['comments'] = ArticlesComment.objects.filter(article_id=article.id, parent=None).prefetch_related('articlescomment_set')
         return context
+
+
+def add_article_comment(request: HttpRequest):
+    print(request.GET)
+    return HttpResponse("response")
