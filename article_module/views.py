@@ -28,12 +28,6 @@ class ArticlesView(ListView):
         return query
 
 
-def article_categories_component(request: HttpRequest):
-    article_main_categories = ArticleCategory.objects.filter(is_active = True, parent_id = None)
-    context = {'main_categories' : article_main_categories}
-    return render(request, 'article_module/components/article_categories_component.html', context)
-
-
 
 class ArticlesDetailView(DetailView):
     model = Article
@@ -49,6 +43,13 @@ class ArticlesDetailView(DetailView):
         article : Article = kwargs.get('object')
         context['comments'] = ArticlesComment.objects.filter(article_id=article.id, parent=None).prefetch_related('articlescomment_set')
         return context
+
+
+
+def article_categories_component(request: HttpRequest):
+    article_main_categories = ArticleCategory.objects.filter(is_active = True, parent_id = None)
+    context = {'main_categories' : article_main_categories}
+    return render(request, 'article_module/components/article_categories_component.html', context)
 
 
 def add_article_comment(request: HttpRequest):

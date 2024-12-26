@@ -1,4 +1,8 @@
 function sendArticleComment(){
     var comment = $('#commentText').val();
-    console.log(comment);
+    $.get('/articles/add-article-comment', {
+        articleComment: comment
+    }).then(res => {
+        console.log(res);
+    });
 }
