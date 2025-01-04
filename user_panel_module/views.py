@@ -5,4 +5,4 @@ from django.views.generic import TemplateView
 # Create your views here.
 
 class UserPanelDashboardPage(TemplateView):
-    pass
+    template_name = ''
