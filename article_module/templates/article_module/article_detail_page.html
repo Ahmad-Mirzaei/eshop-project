@@ -100,10 +100,10 @@
 						</div>
 					</div>
 					{% endif %}
-					<div class="response-area">
+					<div class="response-area" id="comments_area">
 						<h2> نظرات :  ({{ comments.count }})</h2>
 						<ul class="media-list">
-                            
+
 							{% for comment in comments %}
 								<li class="media">
 								<a class="pull-right" href="#">
@@ -146,9 +146,9 @@
 								</div>
 							</li>
                                 {% endfor %}
-                                
+
 							{% endfor %}
-							
+
 
 						</ul>
 					</div><!--/Response-area-->

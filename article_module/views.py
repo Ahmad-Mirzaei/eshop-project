@@ -59,4 +59,5 @@ def add_article_comment(request: HttpRequest):
         parent_id = request.GET.get('parent_id')
         new_comment = ArticlesComment(article_id=article_id, text=article_comment, user_id=request.user.id, parent_id=parent_id)
         new_comment.save()
+        return render(request, '')
     return HttpResponse("response")

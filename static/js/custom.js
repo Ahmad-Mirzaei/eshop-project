@@ -7,7 +7,8 @@ function sendArticleComment(articleId){
         parent_id: parentId
     }).then(res => {
         console.log(res);
-        location.reload()
+        // location.reload()
+        $('#comments_area').html(res);
     });
 }
 
@@ -16,4 +17,5 @@ function fillParentId(parentId) {
     $('#parent_id').val(parentId);
     document.getElementById('comment_form').scrollIntoView({behavior: "smooth"})
 }
+
 
