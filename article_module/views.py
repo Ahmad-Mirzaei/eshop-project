@@ -42,6 +42,7 @@ class ArticlesDetailView(DetailView):
         context = super(ArticlesDetailView, self).get_context_data()
         article : Article = kwargs.get('object')
         context['comments'] = ArticlesComment.objects.filter(article_id=article.id, parent=None).order_by('-create_date').prefetch_related('articlescomment_set')
+        context['comments_count'] = ArticlesComment.objects.filter(article_id=article.id).count()
         return context
 
 
@@ -59,5 +60,9 @@ def add_article_comment(request: HttpRequest):
         parent_id = request.GET.get('parent_id')
         new_comment = ArticlesComment(article_id=article_id, text=article_comment, user_id=request.user.id, parent_id=parent_id)
         new_comment.save()
-        return render(request, '')
+        context = {
+            "comments" : ArticlesComment.objects.filter(article_id=article_d, parent=None).order_by('-create_date').prefetch_related('articlescomment_set'),
+            "comments_count" : ArticlesComment.objects.filter(article_is=article_is).count()
+        }
+        return render(request, 'article_module/includes/article_comments_partial.html', context)
     return HttpResponse("response")

@@ -1,7 +1,9 @@
-<h2> نظرات :  ({{ comments.count }})</h2>
+{% load poll_extras %}
+
+<h2> نظرات :  ({{ comments_count }})</h2>
 <ul class="media-list">
     {% for comment in comments %}
-        <li class="media">
+        <li class="media" id="single_comment_box_{{ comment.id }}">
             <a class="pull-right" href="#">
                 {% if comment.user.avatar %}
                     {% thumbnail comment.user.avatar "121x86" quality=95 crop='center' as im %}
@@ -22,7 +24,7 @@
             </div>
         </li>
         {% for sub_commant in comment.articlescomment_set.all %}
-            <li class="media second-media">
+            <li class="media second-media" id="single_comment_box_{{ comment.id }}">
                 <a class="pull-right" href="#">
                     {% if sub_commant %}
                         {% thumbnail sub_commant.user.avatar "121x86" quality=95 crop='center' as im %}
