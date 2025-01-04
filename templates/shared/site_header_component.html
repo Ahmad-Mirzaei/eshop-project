@@ -87,7 +87,12 @@
                     </div>
                     <div class="mainmenu pull-right">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{% url 'home_page' %}" class="active">خـانه</a></li>
+                            <li>
+                                <a href="{% url 'home_page' %}" 
+                                   class="{% if request.resolver_match.url_name == 'home_page' %}active{% endif %}">
+                                    خـانه
+                                </a>
+                            </li>
                             <li class="dropdown"><a href="#">فروشگـاه<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="shop.html">محصولات</a></li>
@@ -97,7 +102,7 @@
                                     <li><a href="{% url 'login_page' %}">ورود</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{% url 'articles_page' %}">مقالات<i class=""></i></a>
+                            <li><a href="{% url 'articles_page' %}">مقالات<i class="{% if request.resolver_match.url_name == 'articles_page' %}active{% endif %}"></i></a>
 {#                            <li class="dropdown"><a href="#">اخبـار<i class="fa fa-angle-down"></i></a>#}
 {#                                <ul role="menu" class="sub-menu">#}
 {#                                    <li><a href="blog.html">آخریـن اخبـار</a></li>#}
@@ -105,7 +110,7 @@
 {#                                </ul>#}
 {#                            </li>#}
                             <li><a href="About.html">درباره مـا</a></li>
-                            <li><a href="{% url 'contact_us_page' %}">تماس با مـا</a></li>
+                            <li><a href="{% url 'contact_us_page' %}" class="{% if request.resolver_match.url_name == 'contact_us_page' %}active{% endif %}">تماس با مـا</a></li>
                         </ul>
                     </div>
                 </div>
