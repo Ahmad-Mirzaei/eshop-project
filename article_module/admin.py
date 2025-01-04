@@ -2,7 +2,7 @@ from django.contrib import admin
 from . import models
 from django.http import HttpRequest
 
-from .models import Article
+from .models import Article, ArticlesComment
 
 
 # Register your models here.
