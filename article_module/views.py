@@ -2,7 +2,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views.generic import DetailView
 from django.views.generic.list import ListView
-from article_module.models import Article, ArticleCategory, ArticlesComment
+from article_module.models import Article, ArticleCategory, ArticleComment
 
 
 class ArticlesListView(ListView):

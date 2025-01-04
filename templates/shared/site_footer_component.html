@@ -44,18 +44,18 @@
             <div class="row">
                 {% for footer_link_box in footer_link_boxes %}
                     <div class="col-sm-3 pull-right">
-                    <div class="single-widget">
-                        <h2>{{ footer_link_box.title }}</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            {% for link in footer_link_box.footerlink_set.all %}
-                            	<li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                            {% endfor %}
-                            
-                        </ul>
+                        <div class="single-widget">
+                            <h2>{{ footer_link_box.title }}</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                {% for link in footer_link_box.footerlink_set.all %}
+                                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 {% endfor %}
-                
+
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
         <div class="container">
             <div class="row">
                 <p class="pull-right">
-                    .{{ site_setting.copy_right }}
+                    {{ site_setting.copy_right }}
                 </p>
             </div>
         </div>

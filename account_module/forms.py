@@ -74,6 +74,7 @@ class ResetPasswordForm(forms.Form):
             validators.MaxLengthValidator(100),
         ]
     )
+
     confirm_password = forms.CharField(
         label='تکرار کلمه عبور',
         widget=forms.PasswordInput(),

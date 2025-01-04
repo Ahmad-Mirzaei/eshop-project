@@ -1,9 +1,10 @@
 from django.views.generic import ListView
 
+from site_module.models import SiteSetting
 from .forms import ContactUsModelForm
 from django.views.generic.edit import CreateView
+
 from .models import UserProfile
-from site_module.models import SiteSetting
 
 
 class ContactUsView(CreateView):
@@ -13,8 +14,9 @@ class ContactUsView(CreateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        setting: SiteSetting = SiteSetting.objects.filter(is_main_setting = True).first()
-        context["site_setting"] = setting
+        setting: SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
+        context['site_setting'] = setting
+
         return context
 
 

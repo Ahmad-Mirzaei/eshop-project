@@ -142,20 +142,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # SESSION_COOKIE_AGE = 120
 
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp,Email.Backend"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'اکانت ایمیلی که میخواهیم با آن ایمیل بفرستیم'
-EMAIL_HOST_PASSWORD = 'رمز اکانتی که میخواهیم با آن ایمیل بفرستیم'
-EMAIL_PORT = 587  # -> برای جیمیل از این پرت استفاده می شود
+EMAIL_HOST_USER = 'onionarchitecturemvc@gmail.com'
+EMAIL_HOST_PASSWORD = 'djangotoplearn@pass'
+EMAIL_PORT = 587
 
-
-
+# default settings
 JALALI_DATE_DEFAULTS = {
-   # if change it to true then all dates of the list_display will convert to the Jalali.
-   'LIST_DISPLAY_AUTO_CONVERT': False,
-   'Strftime': {
+    'Strftime': {
         'date': '%y/%m/%d',
         'datetime': '%H:%M:%S _ %y/%m/%d',
     },

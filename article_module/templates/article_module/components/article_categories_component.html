@@ -24,7 +24,7 @@
                     <div class="panel-body">
                         <ul>
                             {% for sub_category in main_category.articlecategory_set.all %}
-                                <li><a href="{% url 'articles_by_category_page' category=sub_category.url_title %}"> {{ sub_category.title }} </a></li>
+                                <li><a href="{% url 'articles_by_category_list' category=sub_category.url_title %}"> {{ sub_category.title }} </a></li>
                             {% endfor %}
 
                         </ul>

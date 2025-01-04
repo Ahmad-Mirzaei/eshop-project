@@ -38,7 +38,8 @@
 
                 <div class="col-sm-4" style="text-align: left;">
                     <div class="logo">
-                        <a href="{% url 'home_page' %}"><img src="{{ site_setting.site_logo.url }}" alt="Logo" style="text-align: center; height: 120px"/></a>
+                        <a href="index.html"><img src="{{ site_setting.site_logo.url }}" alt="Logo"
+                                                  style="text-align: center;"/></a>
                     </div>
                 </div>
 
@@ -47,17 +48,15 @@
                         <ul class="nav navbar-nav">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <li><a href="/admin"><i class="fa fa-user"></i> پنل ادمین </a></li>
-                                    <li><a href="{% url 'logout_page' %}"><i class="fa fa-sign-out"></i>  خروج از حساب </a></li>
-                                {% else %}
-                                    <li><a href=""><i class="fa fa-user"></i> پنل کاربری </a></li>
-                                    <li><a href="{% url 'logout_page' %}"><i class="fa fa-sign-out"></i>  خروج از حساب </a></li>
-                                    <li><a href=""><i class="fa fa-shopping-cart"></i>  سبد خرید </a></li>
+                                    <li><a href="/admin"><i class="fa fa-user"></i> پنل ادمین</a></li>
                                 {% endif %}
-                            {% else %}    
-                            	<li><a href="{% url 'register_page' %}"><i class="fa fa-lock"></i> ثبت نام </a></li>
-                            	<li><a href="{% url 'login_page' %}"><i class="fa fa-sign-in"></i> ورود </a></li>
-                            {% endif %} 
+                                <li><a href="login.html"><i class="fa fa-shopping-cart"></i> سبد خرید</a></li>
+                                <li><a href="{% url 'user_panel_dashboard' %}"><i class="fa fa-user"></i> پنل کاربری</a></li>
+                                <li><a href="{% url 'logout_page' %}"><i class="fa fa-sign-out"></i> خروج</a></li>
+                            {% else %}
+                                <li><a href="{% url 'register_page' %}"><i class="fa fa-user-plus"></i> ثبت نام</a></li>
+                                <li><a href="{% url 'login_page' %}"><i class="fa fa-sign-in"></i> ورود</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -88,32 +87,29 @@
                     <div class="mainmenu pull-right">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li>
-                                <a class="{% if request.resolver_match.url_name == 'home_page' %}active{% endif %}"
-                                   href="{% url 'home_page' %}">
+                                <a href="{% url 'home_page' %}"
+                                   class="{% if request.resolver_match.url_name == 'home_page' %}active{% endif %}">
                                     خـانه
                                 </a>
                             </li>
                             <li class="dropdown"><a href="#">فروشگـاه<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{% url 'product-list' %}">محصولات</a></li>
-                                    <li><a href="">جزئیات محصولات</a></li>
-                                    <li><a href="">پرداخت</a></li>
-                                    <li><a href="">سبـد خریـد</a></li>
-                                    <li><a href="{% url 'login_page' %}">ورود</a></li>
+                                    <li><a href="product-details.html">جزئیات محصولات</a></li>
+                                    <li><a href="checkout.html">پرداخت</a></li>
+                                    <li><a href="cart.html">سبـد خریـد</a></li>
+                                    <li><a href="login.html">ورود</a></li>
                                 </ul>
                             </li>
-                            <li><a class="{% if request.resolver_match.url_name == 'articles_page' %}active{% endif %}"
-                                   href="{% url 'articles_page' %}">مقالات<i ></i></a>
-{#                            <li class="dropdown"><a href="#">اخبـار<i class="fa fa-angle-down"></i></a>#}
-{#                                <ul role="menu" class="sub-menu">#}
-{#                                    <li><a href="blog.html">آخریـن اخبـار</a></li>#}
-{#                                    <li><a href="blog-single.html">صفحـه خبـر</a></li>#}
-{#                                </ul>#}
-{#                            </li>#}
-                            <li><a class="{% if request.resolver_match.url_name == 'about_page' %}active{% endif %}"
-                                   href="{% url 'about_page' %}">درباره مـا</a></li>
-                            <li><a class="{% if request.resolver_match.url_name == 'contact_us_page' %}active{% endif %}"
-                                   href="{% url 'contact_us_page' %}" >تماس با مـا</a></li>
+                            <li><a
+                                    class="{% if request.resolver_match.url_name == 'articles_list' %}active{% endif %}"
+                                    href="{% url 'articles_list' %}">مقالات</a></li>
+                            <li><a
+                                    class="{% if request.resolver_match.url_name == 'about_page' %}active{% endif %}"
+                                    href="{% url 'about_page' %}">درباره مـا</a></li>
+                            <li><a
+                                    class="{% if request.resolver_match.url_name == 'contact_us_page' %}active{% endif %}"
+                                    href="{% url 'contact_us_page' %}">تماس با مـا</a></li>
                         </ul>
                     </div>
                 </div>

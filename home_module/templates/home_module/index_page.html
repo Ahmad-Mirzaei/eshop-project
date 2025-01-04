@@ -1,7 +1,7 @@
 {% extends 'shared/_layout.html' %}
 
 {% block title %}
-	فروشگاه من | صفحه اصلی
+    فروشگاه تاپ لرن | صفحه اصلی
 {% endblock %}
 
 {% block content %}
@@ -10,27 +10,28 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
+                        {% comment %} <ol class="carousel-indicators">
                             <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
                             <li data-target="#slider-carousel" data-slide-to="1"></li>
-                        </ol>
+                        </ol>{% endcomment %}
 
                         <div class="carousel-inner">
 
                             {% for slider in sliders %}
                                 <div class="item {% if forloop.first %} active {% endif %}">
-                                <div class="col-sm-6">
-{#                                    <h1><span>SHOP</span>CENTER</h1>#}
-                                    <h2>{{ slider.title }}</h2>
-                                    <p>{{ slider.description }}</p>
-                                    <a href="{{ slider.url }}" target="_blank" class="btn btn-default get">{{ slider.url_title }}</a>
+                                    <div class="col-sm-6">
+                                        <h2>{{ slider.title }}</h2>
+                                        <p>{{ slider.description }}</p>
+                                        <a href="{{ slider.url }}"
+                                           target="_blank"
+                                           class="btn btn-default get">{{ slider.url_title }}</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img src="{{ slider.image.url }}" class="girl img-responsive" width="500"
+                                             alt=""/>
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <img src="{{ slider.image.url }}" class="girl img-responsive" height="300" width="300" alt=""/>
-                                </div>
-                            </div>
                             {% endfor %}
-
 
                         </div>
 
