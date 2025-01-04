@@ -1,48 +1,48 @@
 {% load poll_extras %}
 
-<h2> نظرات :  ({{ comments_count }})</h2>
+<h2> نظرات ({{ comments_count }})</h2>
 <ul class="media-list">
     {% for comment in comments %}
         <li class="media" id="single_comment_box_{{ comment.id }}">
             <a class="pull-right" href="#">
-                {% if comment.user.avatar %}
-                    {% thumbnail comment.user.avatar "121x86" quality=95 crop='center' as im %}
-                        <img class="media-object" src="{{ im.url }}" alt="تصویر مقاله">
-                    {% endthumbnail %}
-                {% else %}
-                    <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
-                {% endif %}
+                <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
             </a>
             <div class="media-body">
                 <ul class="sinlge-post-meta">
                     <li><i class="fa fa-user"></i>{{ comment.user }}</li>
-                    <li><i class="fa fa-clock-o"></i>{{ comment.create_date | time }}</li>
-                    <li><i class="fa fa-calendar"></i>{{ comment.create_date | show_jalali_date }}</li>
+                    <li><i class="fa fa-clock-o"></i> {{ comment.create_date | time }}</li>
+                    <li>
+                        <i class="fa fa-calendar"></i> {{ comment.create_date|show_jalali_date }}
+                    </li>
                 </ul>
-                <p>{{ comment.text }}</p>
-                <a class="btn btn-primary" onclick="fillParentId({{ comment.id }})"><i class="fa fa-reply"></i>پاسـخ</a>
+                <p>
+                    {{ comment.text }}
+                </p>
+                <a class="btn btn-primary" onclick="fillParentId({{ comment.id }})"><i
+                        class="fa fa-reply"></i>پاسـخ</a>
             </div>
         </li>
-        {% for sub_commant in comment.articlescomment_set.all %}
+
+        {% for sub_comment in comment.articlecomment_set.all %}
             <li class="media second-media" id="single_comment_box_{{ comment.id }}">
                 <a class="pull-right" href="#">
-                    {% if sub_commant %}
-                        {% thumbnail sub_commant.user.avatar "121x86" quality=95 crop='center' as im %}
-                            <img class="media-object" src="{{ im.url }}" alt="تصویر مقاله">
-                        {% endthumbnail %}
-                    {% else %}
-                        <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
-                    {% endif %}
+                    <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
                 </a>
                 <div class="media-body">
                     <ul class="sinlge-post-meta">
-                        <li><i class="fa fa-user"></i>{{ sub_commant.user }}</li>
-                        <li><i class="fa fa-clock-o"></i>{{ sub_commant.create_date | time }}</li>
-                        <li><i class="fa fa-calendar"></i>{{ sub_commant.create_date | show_jalali_date }}</li>
+                        <li><i class="fa fa-user"></i>{{ sub_comment.user }}</li>
+                        <li><i class="fa fa-clock-o"></i> {{ sub_comment.create_date | time }}
+                        </li>
+                        <li>
+                            <i class="fa fa-calendar"></i> {{ sub_comment.create_date|show_jalali_date }}
+                        </li>
                     </ul>
-                    <p>{{ sub_commant.text }}</p>
+                    <p>
+                        {{ sub_comment.text }}
+                    </p>
                 </div>
             </li>
         {% endfor %}
     {% endfor %}
+
 </ul>
