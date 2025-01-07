@@ -5,3 +5,7 @@
 .errorlist li {
     color: red;
 }
+
+ul {
+    padding-right: 0;
+}

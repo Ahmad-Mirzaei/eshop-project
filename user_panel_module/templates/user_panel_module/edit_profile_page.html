@@ -1,7 +1,6 @@
 {% extends 'shared/_layout.html' %}
 {% load render_partial %}
 
-
 {% block title %}
     ویرایش اطلاعات کاربری
 {% endblock %}
@@ -10,8 +9,11 @@
     <div class="container">
         <div class="row">
             {% render_partial 'user_panel_module.views.user_panel_menu_component' %}
-            <div class="col-md-8">
-                
+            <div class="col-md-8 pull-right">
+                <form action="{% url 'edit_profile_page' %}" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                </form>
             </div>
         </div>
     </div>
