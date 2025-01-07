@@ -19,7 +19,14 @@ class EditUserProfilePage(View):
         return render(request, 'user_panel_module/edit_profile_page.html', context)
 
     def post(self, request: HttpRequest):
-        return render(request, 'user_panel_module/edit_profile_page.html', {})
+        current_user = User.objects.filter(id=request.user.id).first()
+        edit_form = EditProfileModelForm(request.POST, request.FILES, instance=current_user)
+        if edit_form.is_valid():
+            edit_form.save(commit=True)
+        context = {
+            'form' : edit_form
+        }
+        return render(request, 'user_panel_module/edit_profile_page.html', context)
 
 
 def user_panel_menu_component(request: HttpRequest):

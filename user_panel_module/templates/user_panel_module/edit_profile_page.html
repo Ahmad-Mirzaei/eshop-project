@@ -12,7 +12,8 @@
             <div class="col-md-8 pull-right">
                 <form action="{% url 'edit_profile_page' %}" method="post">
                     {% csrf_token %}
-                    {{ form }}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">ثبت</button>
                 </form>
             </div>
         </div>
