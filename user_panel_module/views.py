@@ -14,7 +14,8 @@ class EditUserProfilePage(View):
         current_user = User.objects.filter(id=request.user.id).first()
         edit_form = EditProfileModelForm(instance= current_user)
         context = {
-            'form': edit_form
+            'form': edit_form,
+            'current_user' : current_user
         }
         return render(request, 'user_panel_module/edit_profile_page.html', context)
 
@@ -24,7 +25,8 @@ class EditUserProfilePage(View):
         if edit_form.is_valid():
             edit_form.save(commit=True)
         context = {
-            'form' : edit_form
+            'form' : edit_form,
+            'current_user': current_user
         }
         return render(request, 'user_panel_module/edit_profile_page.html', context)
 
