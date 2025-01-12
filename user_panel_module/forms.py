@@ -1,7 +1,7 @@
 from django import forms
+from django.core import validators
 from django.core.exceptions import ValidationError
-from setuptools.config.pyprojecttoml import validate
-from django.core.validators import MaxLengthValidator, MinLengthValidator
+
 from account_module.models import User
 
 
@@ -25,7 +25,8 @@ class EditProfileModelForm(forms.ModelForm):
             }),
             'about_user': forms.Textarea(attrs={
                 'class': 'form-control',
-                'rows': 3,
+                'rows': 6,
+                'id': 'message'
             })
         }
 
@@ -34,28 +35,50 @@ class EditProfileModelForm(forms.ModelForm):
             'last_name': 'نام خانوادگی',
             'avatar': 'تصویر پروفایل',
             'address': 'آدرس',
-            'about_user': 'درباره من',
+            'about_user': 'درباره شخص',
         }
 
 
 class ChangePasswordForm(forms.Form):
-    current_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}),
-                                       label="کلمه عبور فعلی",
-                                       validators=[MaxLengthValidator(100)]
-                                       )
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}),
-                               label="کلمه عبور جدید",
-                               validators=[MaxLengthValidator(100)]
-                               )
-    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}),
-                                       label="تکرار کلمه عبور جدید",
-                                       validators=[MaxLengthValidator(100)]
-                                       )
+    current_password = forms.CharField(
+        label='کلمه عبور فعلی',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control'
+            }
+        ),
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
+    password = forms.CharField(
+        label='کلمه عبور',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control'
+            }
+        ),
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
+    confirm_password = forms.CharField(
+        label='تکرار کلمه عبور',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control'
+            }
+        ),
+        validators=[
+            validators.MaxLengthValidator(100),
+        ]
+    )
 
-    def clean_confirm_new_password(self):
+    def clean_confirm_password(self):
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.get('confirm_password')
 
         if password == confirm_password:
             return confirm_password
-        raise ValidationError('کاربر گرامی، کلمه ی عبور و تکرار آن مغایرت دارند؛ لطفاً دوباره سعی کنید.')
+
+        raise ValidationError('کلمه عبور و تکرار کلمه عبور مغایرت دارند')
