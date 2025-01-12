@@ -36,6 +36,7 @@ class ChangePasswordPage(View):
         return render(request, 'user_panel_module/change_password_page.html')
 
     def post(self, request: HttpRequest):
+
         pass
 
 
