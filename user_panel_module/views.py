@@ -2,7 +2,7 @@ from django.http import HttpRequest
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
-from .forms import EditProfileModelForm
+from .forms import EditProfileModelForm, ChangePasswordForm
 from account_module.models import User
 
 class UserPanelDashboardPage(TemplateView):
@@ -33,7 +33,10 @@ class EditUserProfilePage(View):
 
 class ChangePasswordPage(View):
     def get(self, request: HttpRequest):
-        return render(request, 'user_panel_module/change_password_page.html')
+        context = {
+            'form' : ChangePasswordForm()
+        }
+        return render(request, 'user_panel_module/change_password_page.html', context)
 
     def post(self, request: HttpRequest):
 

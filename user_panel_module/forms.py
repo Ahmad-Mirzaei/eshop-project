@@ -39,9 +39,18 @@ class EditProfileModelForm(forms.ModelForm):
 
 
 class ChangePasswordForm(forms.Form):
-    current_password = forms.CharField(widget=forms.PasswordInput(), label="کلمه عبور فعلی", validators=[MaxLengthValidator(100)])
-    password = forms.CharField(widget=forms.PasswordInput(), label="کلمه عبور جدید", validators=[MaxLengthValidator(100)])
-    confirm_password = forms.CharField(widget=forms.PasswordInput(), label="تکرار کلمه عبور جدید", validators=[MaxLengthValidator(100)])
+    current_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}),
+                                       label="کلمه عبور فعلی",
+                                       validators=[MaxLengthValidator(100)]
+                                       )
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}),
+                               label="کلمه عبور جدید",
+                               validators=[MaxLengthValidator(100)]
+                               )
+    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}),
+                                       label="تکرار کلمه عبور جدید",
+                                       validators=[MaxLengthValidator(100)]
+                                       )
 
     def clean_confirm_new_password(self):
         password = self.cleaned_data.get('password')
