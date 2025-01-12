@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.base import TemplateView, View
 from django.views.generic import ListView, DetailView
@@ -31,3 +32,7 @@ class AddProductFavorite(View):
         product = Product.objects.get(pk=product_id)
         request.session["product_favorites"] = product_id
         return redirect(product.get_absolute_url())
+
+
+def product_categories_component(request: HttpRequest):
+    return render(request, '')
