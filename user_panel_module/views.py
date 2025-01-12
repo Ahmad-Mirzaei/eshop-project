@@ -31,5 +31,13 @@ class EditUserProfilePage(View):
         return render(request, 'user_panel_module/edit_profile_page.html', context)
 
 
+class ChangePasswordPage(View):
+    def get(self, request: HttpRequest):
+        return render(request, 'user_panel_module/change_password_page.html')
+
+    def post(self, request: HttpRequest):
+        pass
+
+
 def user_panel_menu_component(request: HttpRequest):
     return render(request, 'user_panel_module/components/user_panel_menu_component.html')
