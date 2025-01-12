@@ -1,3 +1,10 @@
-{% extends 'shared/_layout.html' %}
-
-
+<h2>دسته بندی محصولات</h2
+<div class="panel-group category-products" id="accordian">
+    {% for category in categories %}
+    	<div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><a href="{% url 'product-categories-list' cat=category.url_title %}">{{ category.title }}</a></h4>
+            </div>
+        </div>
+    {% endfor %}
+</div>
