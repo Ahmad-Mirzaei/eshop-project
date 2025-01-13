@@ -1,0 +1,13 @@
+{% extends 'shared/_layout.html' %}
+
+<div class="brands_products">
+    <h2>برنـد ها</h2>
+    <div class="brands-name">
+        <ul class="nav nav-pills nav-stacked">
+            {% for brand in brands %}
+            	<li><a href=""> <span class="pull-left">({{ brand.products_count }})</span>{{ brand.title }}</a></li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>

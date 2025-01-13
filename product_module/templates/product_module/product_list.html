@@ -36,19 +36,10 @@
 
                 <div class="col-sm-3">
                     <div class="left-sidebar">
+
                         {% render_partial 'product_module.views.product_categories_component' %}
-                        <div class="brands_products"><!--brands_products-->
-                            <h2>برنـد ها</h2>
-                            <div class="brands-name">
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><a href=""> <span class="pull-left">(50)</span>برنـد 1</a></li>
-                                    <li><a href=""> <span class="pull-left">(56)</span>برنـد 2</a></li>
-                                    <li><a href=""> <span class="pull-left">(27)</span>برنـد 3</a></li>
-                                    <li><a href=""> <span class="pull-left">(32)</span>برنـد 4</a></li>
-                                    <li><a href=""> <span class="pull-left">(5)</span>برنـد 5</a></li>
-                                </ul>
-                            </div>
-                        </div><!--/brands_products-->
+
+                        {% render_partial 'product_module.views.product_brands_component' %}
 
                         <div class="price-range"><!--price-range-->
                             <h2>فیلتـر قیمـت</h2>

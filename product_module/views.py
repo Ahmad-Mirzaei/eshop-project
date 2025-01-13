@@ -1,8 +1,9 @@
+from django.db.models import Count
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
-from .models import Product, ProductCategory
+from .models import Product, ProductCategory, ProductBrand
 
 
 class ProductListView(ListView):
@@ -48,3 +49,11 @@ def product_categories_component(request: HttpRequest):
         'categories' : product_categories
     }
     return render(request, 'product_module/components/product_categories_component.html', context)
+
+
+def product_brands_component(request: HttpRequest):
+    product_brands = ProductBrand.objects.annotate(products_count=Count('product')).filter(is_active=True)
+    context = {
+        'brands' : product_brands
+    }
+    return render(request, "product_module/components/product_brands_component.html", context)
