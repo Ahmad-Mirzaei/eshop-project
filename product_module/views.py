@@ -16,6 +16,7 @@ class ProductListView(ListView):
     def get_queryset(self):
         query = super(ProductListView, self).get_queryset()
         category_name = self.kwargs.get('cat')
+        rand_name = self.kwargs.get('brand')
         if category_name is not None:
             query = query.filter(category__url_title__iexact=category_name)
         return query
