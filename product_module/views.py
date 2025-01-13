@@ -16,11 +16,14 @@ class ProductListView(ListView):
     def get_queryset(self):
         query = super(ProductListView, self).get_queryset()
         category_name = self.kwargs.get('cat')
-        rand_name = self.kwargs.get('brand')
+        brand_name = self.kwargs.get('brand')
+
+        if brand_name is not None:
+            query = query.filter(brand__url_title__iexact=brand_name)
+
         if category_name is not None:
             query = query.filter(category__url_title__iexact=category_name)
         return query
-
 
 
 class ProductDetailView(DetailView):
@@ -47,7 +50,7 @@ class AddProductFavorite(View):
 def product_categories_component(request: HttpRequest):
     product_categories = ProductCategory.objects.filter(is_active=True, is_delete=False)
     context = {
-        'categories' : product_categories
+        'categories': product_categories
     }
     return render(request, 'product_module/components/product_categories_component.html', context)
 
@@ -55,6 +58,6 @@ def product_categories_component(request: HttpRequest):
 def product_brands_component(request: HttpRequest):
     product_brands = ProductBrand.objects.annotate(products_count=Count('product')).filter(is_active=True)
     context = {
-        'brands' : product_brands
+        'brands': product_brands
     }
-    return render(request, "product_module/components/product_brands_component.html", context)
+    return render(request, 'product_module/components/product_brands_component.html', context)

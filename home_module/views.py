@@ -26,8 +26,6 @@ def site_header_component(request):
 def site_footer_component(request):
     setting: SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
     footer_link_boxes = FooterLinkBox.objects.all()
-    for item in footer_link_boxes:
-        item.footerlink_set
     context = {
         'site_setting': setting,
         'footer_link_boxes': footer_link_boxes
@@ -43,4 +41,3 @@ class AboutView(TemplateView):
         site_setting: SiteSetting = SiteSetting.objects.filter(is_main_setting=True).first()
         context['site_setting'] = site_setting
         return context
-
